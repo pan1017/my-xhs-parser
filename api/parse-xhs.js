@@ -92,7 +92,7 @@ app.post('/api/parse-xhs', async (req, res) => {
         const collectedCount = noteData.interactInfo?.collectedCount || '0';
 
         // 4. 批量下载前几张图片并转为 Base64，供 AI 多模态读图[cite: 1]
-        const imagesToFetch = rawImages.slice(0, 4); // 限制最多4张防止大模型超限
+        const imagesToFetch = rawImages.slice(0, 9); // 限制最多9张防止大模型超限
         const imagePromises = imagesToFetch.map(imgUrl => urlToBase64(imgUrl));
         const processedImages = (await Promise.all(imagePromises)).filter(Boolean);
 
